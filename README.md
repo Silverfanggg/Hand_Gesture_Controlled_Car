@@ -7,3 +7,7 @@ Hand Gesture Controlled Car is a car project that you can control remotely with 
 - L298N Motor Driver Module
 - 12V battery for car
 - 9V battery for transmitter
+
+## Circuits
+- Transmitter Circuit
+- ![transmitter_circuit](https://github.com/user-attachments/assets/c5c965d1-1239-4ffd-a514-b922a43af6eb)
