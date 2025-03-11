@@ -9,5 +9,8 @@ Hand Gesture Controlled Car is a car project that you can control remotely with 
 - 9V battery for transmitter
 
 ## Circuits
-- Transmitter Circuit
+- ## Transmitter Circuit
 - ![transmitter_circuit](https://github.com/user-attachments/assets/c5c965d1-1239-4ffd-a514-b922a43af6eb)
+- ## Receiver Circuit
+- ![receiver_circuit](https://github.com/user-attachments/assets/e6f28e83-9041-46dd-8761-0933e22ee0dc)
+
