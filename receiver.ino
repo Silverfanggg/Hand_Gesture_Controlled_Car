@@ -15,7 +15,8 @@ int data[2];
 RF24 radio(8, 9);
 const uint64_t pipe = 0xE8E8F0F0E1LL;
 
-void setup() {
+void setup()
+{
   pinMode(enbA, OUTPUT);
   pinMode(enbB, OUTPUT);
   pinMode(IN1, OUTPUT);
@@ -30,11 +31,14 @@ void setup() {
   radio.startListening();
 }
 
-void loop() {
-  if (radio.available()) {
+void loop()
+{
+  if (radio.available())
+  {
     radio.read(data, sizeof(data));
 
-    if (data[0] < 340) {
+    if (data[0] < 340)
+    {
       analogWrite(enbA, RightSpd);
       analogWrite(enbB, LeftSpd);
       digitalWrite(IN1, HIGH);
@@ -42,7 +46,9 @@ void loop() {
       digitalWrite(IN3, HIGH);
       digitalWrite(IN4, LOW);
       Serial.println("Forward");
-    } else if (data[0] > 360) {
+    }
+    else if (data[0] > 360)
+    {
       analogWrite(enbA, RightSpd);
       analogWrite(enbB, LeftSpd);
       digitalWrite(IN1, LOW);
@@ -50,7 +56,9 @@ void loop() {
       digitalWrite(IN3, LOW);
       digitalWrite(IN4, HIGH);
       Serial.println("Backward");
-    } else if (data[1] > 160) {
+    }
+    else if (data[1] > 160)
+    {
       analogWrite(enbA, RightSpd);
       analogWrite(enbB, LeftSpd);
       digitalWrite(IN1, LOW);
@@ -58,7 +66,9 @@ void loop() {
       digitalWrite(IN3, HIGH);
       digitalWrite(IN4, LOW);
       Serial.println("Right");
-    } else if (data[1] < 140) {
+    }
+    else if (data[1] < 140)
+    {
       analogWrite(enbA, RightSpd);
       analogWrite(enbB, LeftSpd);
       digitalWrite(IN1, HIGH);
@@ -66,7 +76,9 @@ void loop() {
       digitalWrite(IN3, LOW);
       digitalWrite(IN4, HIGH);
       Serial.println("Left");
-    } else {
+    }
+    else
+    {
       analogWrite(enbA, 0);
       analogWrite(enbB, 0);
       digitalWrite(IN1, LOW);
