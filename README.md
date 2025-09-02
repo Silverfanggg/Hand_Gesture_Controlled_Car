@@ -4,7 +4,7 @@ Hand Gesture Controlled Car is a car project that you can control remotely with 
 - Arduino Nano
 - NRF24L01 Module
 - MPU6050 Accelerometer Module
-- L298N Motor Driver Module
+- Motor Driver
 - 12V battery for car
 - 9V battery for transmitter
 
