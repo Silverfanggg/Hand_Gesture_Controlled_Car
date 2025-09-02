@@ -11,13 +11,17 @@ int data[2];
 RF24 radio(8, 9);
 const uint64_t pipe = 0xE8E8F0F0E1LL;
 
-void setup() {
+void setup()
+{
   Serial.begin(9600);
   Wire.begin();
   mpu.initialize();
-  if (mpu.testConnection()) {
+  if (mpu.testConnection())
+  {
     Serial.println("MPU6050 connection successful.");
-  } else {
+  }
+  else
+  {
     Serial.println("MPU6050 connection failed.");
   }
 
@@ -27,22 +31,31 @@ void setup() {
   radio.stopListening();
 }
 
-void loop() {
-  mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+void loop()
+{
+  unsigned long lastTime = 0;
+  unsigned long currentTime = millis();
 
-  data[0] = constrain(map(ax, -17000, 17000, 300, 400), 300, 400);
-  data[1] = constrain(map(ay, -17000, 17000, 100, 200), 100, 200);
+  if (currentTime - lastTime >= 100)
+  {
+    lastTime = currentTime;
 
-  bool success = radio.write(data, sizeof(data));
+    mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
 
-  if (success) {
-    Serial.print("X-axis: ");
-    Serial.println(data[0]);
-    Serial.print("Y-axis: ");
-    Serial.println(data[1]);
-  } else {
-    Serial.println("Data transmission failed.");
+    data[0] = constrain(map(ax, -17000, 17000, 300, 400), 300, 400);
+    data[1] = constrain(map(ay, -17000, 17000, 100, 200), 100, 200);
+
+    bool success = radio.write(data, sizeof(data));
+
+    if (success)
+    {
+      Serial.print("X-axis: ");
+      Serial.println(data[0]);
+      Serial.print("Y-axis: ");
+      Serial.println(data[1]);
+    }
+    else
+    {
+      Serial.println("Data transmission failed.");
+    }
   }
-
-  delay(100);
-}
